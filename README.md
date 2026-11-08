@@ -6,8 +6,10 @@ Created by **[voidsamin](https://github.com/voidsamin)**.
 
 ## What it does
 
-- **Reads roster screenshots:** player names (copied exactly), legion scores, ranks (R4/R3), and slot A/B as starter or sub.
+- **Reads roster screenshots:** player names (copied exactly), legion scores, ranks (R5/R4/R3 and below), and slot A/B as starter or sub.
+- **Defaults to Team A:** unless you say otherwise, it builds the lineup for the slot A players.
 - **Checks the counts:** 20 starters and 10 subs per slot. If anything looks off, it asks before going further.
+- **Asks instead of guessing:** if a name, count, rank or captain is unclear, it asks you before writing the mails.
 - **Builds 5 teams per slot:**
 
   | Team | Name | Size |
@@ -19,9 +21,17 @@ Created by **[voidsamin](https://github.com/voidsamin)**.
   | 5 | Ball Team | 6 (top 6 scores) |
 
 - **Balances Teams 1–4** by average legion score, computed in code rather than estimated by eye.
-- **Assigns captains** `(c)` from the R4 starters, and asks you when the choice isn't obvious.
+- **Assigns captains** `(c)` from the R4 and R5 starters, and asks you when the choice isn't obvious.
 - **Lists substitutes** in the order they appear in the screenshots.
 - **Writes two formats:** the in-game mail (title + body) and a Discord post with team emojis, each checked against the 2000-character limit.
+
+### Alliance ranks
+
+| Rank | Role | Can captain? |
+|---|---|---|
+| R5 | Alliance leader | Yes |
+| R4 | Co-leader | Yes |
+| R3 and below | Member | Only if you choose them |
 
 ## Install
 
@@ -44,7 +54,9 @@ In a chat, send your BGB roster screenshots and ask something like:
 
 > Make the BGB lineup for these.
 
-Claude will confirm the player counts, ask about captains if needed, then give you the mail and Discord posts in copy-ready code blocks, followed by the average score of Teams 1–4.
+This builds Team A. For Team B, say so, e.g. *"Make the BGB lineup for Team B."*
+
+Claude will confirm the player counts, ask about anything unclear (names, ranks, captains), then give you the mail and Discord posts in copy-ready code blocks, followed by the average score of Teams 1–4.
 
 ## Repository contents
 
